@@ -1,43 +1,83 @@
-# lumux
+<h1 align="center">lumux</h1>
 
-Accessible themes and components, with contrast enforced at build time.
+<p align="center">
+  <strong>Accessible themes and components, with contrast enforced at build time.</strong><br>
+  Six WCAG 2.2 AAA themes, one semantic token vocabulary, one React component set.
+</p>
 
-Six WCAG 2.2 AAA themes, one semantic token vocabulary, and a small React component set. Built on CSS custom properties and Tailwind v4.
+<p align="center">
+  <a href="https://danieloceno.github.io/lumux/"><strong>Live demo</strong></a> ·
+  <a href="./docs/getting-started.md">Getting started</a> ·
+  <a href="./docs/tokens.md">Tokens</a> ·
+  <a href="./docs/components.md">Components</a> ·
+  <a href="./docs/gates.md">Gates</a>
+</p>
 
-**[Live demo](https://danieloceno.github.io/lumux/)**: every component in every state, in all six themes.
+<p align="center">
+  <a href="https://github.com/danieloceno/lumux/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/danieloceno/lumux/ci.yml?branch=main&style=flat-square&label=ci"></a>
+  <a href="https://danieloceno.github.io/lumux/"><img alt="Demo" src="https://img.shields.io/github/actions/workflow/status/danieloceno/lumux/demo.yml?branch=main&style=flat-square&label=demo"></a>
+  <a href="#status"><img alt="Status: pre-release" src="https://img.shields.io/badge/status-pre--release-orange?style=flat-square"></a>
+  <a href="./LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-555?style=flat-square"></a>
+</p>
 
-> **Status:** pre-release. Expect breaking changes before `1.0.0`.
+<p align="center">
+  <a href="#accessibility"><img alt="WCAG 2.2 AAA" src="https://img.shields.io/badge/WCAG_2.2-AAA-1f6f43?style=flat-square"></a>
+  <a href="#accessibility"><img alt="Text contrast 7:1" src="https://img.shields.io/badge/text_contrast-7%3A1-1f6f43?style=flat-square"></a>
+  <a href="#accessibility"><img alt="Touch targets 44px" src="https://img.shields.io/badge/touch_targets-44px-1f6f43?style=flat-square"></a>
+  <a href="#themes"><img alt="Six themes" src="https://img.shields.io/badge/themes-6-005778?style=flat-square"></a>
+  <a href="#themes"><img alt="378 pairs checked" src="https://img.shields.io/badge/contrast_pairs-378_checked-005778?style=flat-square"></a>
+</p>
 
-## Why
+<p align="center">
+  <a href="#stack"><img alt="React 19" src="https://img.shields.io/badge/React-19-20232a?style=flat-square&logo=react&logoColor=61dafb"></a>
+  <a href="#stack"><img alt="Tailwind v4" src="https://img.shields.io/badge/Tailwind-v4-06b6d4?style=flat-square&logo=tailwindcss&logoColor=white"></a>
+  <a href="#stack"><img alt="TypeScript strict" src="https://img.shields.io/badge/TypeScript-strict-3178c6?style=flat-square&logo=typescript&logoColor=white"></a>
+  <a href="#stack"><img alt="Radix primitives" src="https://img.shields.io/badge/Radix-primitives-161618?style=flat-square&logo=radixui&logoColor=white"></a>
+  <a href="#versioning"><img alt="Semver via git tags" src="https://img.shields.io/badge/versioning-semver_via_git_tags-555?style=flat-square"></a>
+</p>
 
-Accessibility is usually a review step. In lumux it is a property of the system: a color pair that fails contrast breaks the build, and a control smaller than 44px cannot be built.
+---
 
-- **7:1 text contrast** in every theme, no large-text discount
-- **3:1** for borders, focus rings and chart marks
-- **44 × 44px** minimum touch targets, every pointer, dense layouts included
-- **2px focus outline**, never obscured, forced-colors safe
-- **Reduced motion** respected by every motion token
-- **Keyboard-first**: nothing depends on hover
-- **No timing**: error toasts never auto-dismiss
+## Table of contents
 
-## Themes
+- [Why lumux](#why-lumux)
+- [Status](#status)
+- [Quick start](#quick-start)
+- [How it fits together](#how-it-fits-together)
+- [Themes](#themes)
+- [Accessibility](#accessibility)
+- [Components](#components)
+- [Gates](#gates)
+- [Principles](#principles)
+- [Stack](#stack)
+- [Package contents](#package-contents)
+- [Repo layout](#repo-layout)
+- [Development](#development)
+- [Versioning](#versioning)
+- [Contributing](#contributing)
+- [Documents](#documents)
+- [License](#license)
 
-Selected with a single attribute: `<html data-theme="ocean">`.
+---
 
-| `data-theme` | Scheme | Canvas / surface | Accent |
-|---|---|---|---|
-| `day` | light | `#f6f8fa` / `#ffffff` | `#005778` |
-| `night` | dark | `#0a1d2a` / `#112634` | `#00cde0` |
-| `dawn` | light | `#fdfcfb` / `#ffffff` | `#4326d5` |
-| `midnight` | dark | `#0e0e11` / `#17171c` | `#b69ffa` |
-| `forest` | light | `#f3f6f5` / `#ffffff` | `#1a5a3a` |
-| `ocean` | dark | `#0f131a` / `#171d26` | `#24c0f3` |
+## Why lumux
 
-`system` resolves to `day` or `night` from `prefers-color-scheme`. All 378 color pairs (63 per theme) are checked by `npm run check:contrast`. Full reference: [docs/tokens.md](./docs/tokens.md).
+Accessibility is usually a review step. In lumux it is a property of the system. A colour pair that fails contrast breaks the build. A control smaller than 44px cannot be built. A dark theme is authored, not inverted.
 
-## Install
+Every app that adopts lumux uses the same semantic tokens, mounts the same components and runs the same gates. Changing the palette means changing one file, and moving between apps means relearning nothing.
 
-Git-tag install, with `dist/` committed on the tag commit. Step by step: [docs/getting-started.md](./docs/getting-started.md).
+## Status
+
+| Area | Scope | State |
+|---|---|---|
+| Tokens & themes | Token source of truth, six AAA themes, contrast gate, focus and motion primitives | ✅ Shipped · [`docs/tokens.md`](./docs/tokens.md) |
+| Components | React 19 set on Radix: actions, forms, overlays, content, toasts | ✅ Shipped · [`docs/components.md`](./docs/components.md) |
+| Gates | className, disabled-title and nested-scroller checks, installable into any consumer | ✅ Shipped · [`docs/gates.md`](./docs/gates.md) |
+| `1.0.0` | API freeze | ⏳ Planned |
+
+Pre-release: expect breaking changes before `1.0.0`. Pin an exact tag.
+
+## Quick start
 
 ```sh
 npm i github:danieloceno/lumux#v0.3.0
@@ -48,55 +88,212 @@ npm i github:danieloceno/lumux#v0.3.0
 @import "tailwindcss";
 @import "lumux/tokens.css";
 @import "lumux/theme.css";
+@source "../node_modules/lumux/dist/react";
 ```
 
-Add the pre-paint script inline in `<head>`, before any CSS, to avoid a theme flash:
+Inline the pre-paint script in `<head>`, before any CSS, so a stored dark theme never flashes light:
 
 ```html
 <script>try{var t=localStorage.getItem("lumux-theme");if(["day","night","dawn","midnight","forest","ocean"].indexOf(t)>-1)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 ```
 
-Switch themes from code:
-
-```ts
-import { applyTheme } from "lumux/theme";
-
-applyTheme({ theme: "ocean" }); // any theme name, or "system"
-```
-
-## Use the tokens
-
-Reference semantic tokens, never raw values.
-
-```html
-<button class="bg-accent text-accent-foreground min-h-target rounded-control">
-  Save
-</button>
-```
-
-Or use the components:
-
 ```tsx
-import { Button, ThemeProvider, ThemeSwitcher } from "lumux/react";
+import { AppShell, Button, ThemeProvider, ThemeSwitcher, THEME_NAMES } from "lumux/react";
+
+export function App() {
+  return (
+    <ThemeProvider>
+      <AppShell header={<ThemeSwitcher themes={THEME_NAMES} className="ml-auto" />}>
+        <Button onClick={save}>Save</Button>
+      </AppShell>
+    </ThemeProvider>
+  );
+}
 ```
 
-## What's inside
+No React? `import { applyTheme } from "lumux/theme"` handles theme selection and persistence without a framework. The full walkthrough is in [docs/getting-started.md](./docs/getting-started.md).
+
+## How it fits together
+
+```mermaid
+flowchart LR
+  subgraph lumux["lumux"]
+    direction TB
+    V["vocabulary.ts<br/>token names + legal fg/bg pairs"]
+    T["themes.ts<br/>six names + scheme"]
+    S["sets/<br/>core · extended"]
+    SC["scale.ts<br/>type · spacing · radius · motion · z · targets"]
+    B["build-tokens.ts"]
+    C["check-contrast.ts<br/>six themes × every pairing"]
+    R["src/react/<br/>components + ThemeProvider"]
+    D["dist/<br/>tokens.css · tokens.host.css<br/>tokens.embed.css · theme.css · theme-init.js"]
+    V --> B
+    T --> B
+    S --> B
+    SC --> B
+    B --> D
+    V --> C
+    S --> C
+    C -. "exit 1 on any failure" .-> D
+  end
+
+  D -- "theme.css (@theme)" --> A["Tailwind v4 apps"]
+  D -- "tokens.host.css" --> SR["Shadow-root UIs"]
+  D -- "tokens.embed.css<br/>(16 tokens, no Tailwind)" --> E["Embeds"]
+  R --> A
+```
+
+CSS custom properties are the contract. Tailwind v4 reads them through `theme.css`. Embeds and shadow roots use them directly, without Tailwind.
+
+## Themes
+
+Six themes in two families, all on one vocabulary, all at AAA.
+
+- **core** (`day` / `night`): the default pair. `system` resolves to it.
+- **extended** (`dawn` / `midnight` / `forest` / `ocean`): each keeps its source palette's hue and saturation. Only lightness moved, until every pair passed.
+
+| `data-theme` | Scheme | Canvas / surface | Accent |
+|---|---|---|---|
+| `day` | light | `#f6f8fa` / `#ffffff` | `#005778` |
+| `night` | dark | `#0a1d2a` / `#112634` | `#00cde0` |
+| `dawn` | light | `#fdfcfb` / `#ffffff` | `#4326d5` |
+| `midnight` | dark | `#0e0e11` / `#17171c` | `#b69ffa` |
+| `forest` | light | `#f3f6f5` / `#ffffff` | `#1a5a3a` |
+| `ocean` | dark | `#0f131a` / `#171d26` | `#24c0f3` |
+
+`npm run check:contrast` checks 378 legal pairs, 63 per theme: text at 7:1, and boundaries, focus rings and chart marks at 3:1. Full values are in [docs/tokens.md](./docs/tokens.md). [`src/tokens/sets/extended.ts`](./src/tokens/sets/extended.ts) has the derivation notes.
+
+```mermaid
+flowchart TD
+  A["First paint<br/>(inline theme-init.js)"] --> B{"localStorage<br/>lumux-theme?"}
+  B -- yes --> C["apply stored theme"]
+  B -- no --> G{"prefers-color-scheme"}
+  G -- dark --> H["theme = night"]
+  G -- light --> I["theme = day"]
+  C --> J["&lt;html data-theme=…&gt;"]
+  H --> J
+  I --> J
+  J --> K["ThemeProvider · switcher writes<br/>the value back to lumux-theme"]
+```
+
+- One `<html>` attribute selects the theme: `data-theme`.
+- The choice persists in `localStorage["lumux-theme"]`. Embeds never persist it.
+- The CSS always ships all six themes. An app offers a subset through `<ThemeSwitcher themes={…}>`.
+
+## Accessibility
+
+WCAG 2.2 **AAA wherever achievable, AA as the floor**. Each rule is enforced, not left to reviewers.
+
+| Criterion | lumux rule | Enforced by |
+|---|---|---|
+| 1.4.6 Contrast (Enhanced) | Every text pair 7:1 in all six themes, with no large-text discount | `check-contrast.ts` in CI (exit 1 on failure), axe in the e2e harness |
+| 1.4.11 Non-text contrast | Control edges, focus rings and chart marks 3:1 on every surface | `check-contrast.ts` |
+| 2.5.5 Target size (Enhanced) | 44 × 44px minimum for every pointer, dense layouts included | e2e measures every target in every theme, density and viewport |
+| 2.4.13 Focus appearance | 2px solid outline, never obscured, one definition, forced-colors safe | Focus primitive, per-element focus-visible diff in e2e |
+| 2.1.3 Keyboard (no exception) | Everything works without a pointer; nothing depends on hover | Component contracts, manual screen-reader pass |
+| 2.2.3 No timing | No time limits; error toasts never auto-dismiss | `ToastProvider`, `role=alert`, a reachable toast log |
+| 2.3.3 Animation from interactions | Motion tokens collapse under `prefers-reduced-motion` | Motion primitive |
+| 2.4.1 Bypass blocks | Skip link in every app shell | `AppShell`, e2e |
+| 1.3.5 / 3.3.x Forms | `autocomplete` on every field; errors as icon + text with `role=alert` and `aria-invalid` | `Field`, `eslint-plugin-jsx-a11y` strict config |
+
+The trade-offs were accepted up front: there is no `sm` button size, dark accents read paler than their 4:1 originals, and brand colours that cannot reach 7:1 are kept for brand marks only.
+
+UI code cannot gate content-level criteria such as reading level (3.1.5). They live in [docs/copy.md](./docs/copy.md) as guidance, not as claims.
+
+## Components
+
+Imported from `lumux/react`. Each one documents the accessibility behaviour it guarantees in [docs/components.md](./docs/components.md).
+
+| Group | Components |
+|---|---|
+| Shell & theme | `AppShell`, `SkipLink`, `useDocumentTitle`, `ThemeProvider`, `useTheme`, `ThemeSwitcher`, `IconProvider` |
+| Actions | `Button`, `IconButton`, `LinkButton`, `ConfirmInline`, `Spinner` |
+| Forms | `Field`, `Input`, `Select`, `Textarea`, `Checkbox`, `RadioGroup`, `Switch`, `SegmentedControl` |
+| Overlays | `Dialog`, `Sheet`, `Drawer`, `Menu`, `Popover`, `Tooltip` |
+| Content | `Card`, `Badge`, `EmptyState` |
+| Feedback | `ToastProvider`, `useToast`, `ToastLog`, `useToastLog` |
+
+The [live demo](https://danieloceno.github.io/lumux/) shows every component in every state, in all six themes. The e2e suite runs against that same page.
+
+## Gates
+
+Three scripts that fail the build on UI defects that reviews miss. lumux runs them on itself, and `install-gates.sh` installs them into any consumer with a frozen baseline.
+
+| Gate | Catches |
+|---|---|
+| `check-ui-className.mjs` | Appearance overrides on primitives, raw palette classes, arbitrary values, controls under 44px, off-scale icons, opacity on text, prose over 90 characters |
+| `check-disabled-title.sh` | A disabled control whose only reason is a `title` |
+| `check-nested-scrollers.sh` | An `overflow-*` with no written reason |
+
+```sh
+bash node_modules/lumux/scripts/install-gates.sh --src src
+```
+
+Config, ratchets and blind spots are in [docs/gates.md](./docs/gates.md).
+
+## Principles
+
+**Semantic tokens, never raw values.** Apps reference `background`, `foreground`, `accent`, `danger`. Never a hex, a pixel or a per-component colour.
+
+**Every theme is authored.** A dark theme is not an inverted light one. Each of the six is designed and verified on its own.
+
+**Identical everywhere.** Same component, same behaviour, same measurements, same copy conventions. A deviation is a documented variant with a stated reason.
+
+**Mobile-first.** The scale enforces touch targets, thumb reach and safe areas. Layouts hold at 200% zoom and at 320px.
+
+**Say less.** Redundant helper text is a defect. Labels, errors, state announcements and accessible names always stay. Helper text is capped at 90 characters.
+
+**Maintainable by a small team.** No Storybook, no visual-regression SaaS, no token toolchain. One playground, one test suite, plain TypeScript.
+
+## Stack
+
+| Layer | Choice |
+|---|---|
+| Token contract | CSS custom properties, generated from TypeScript sources |
+| Utility layer | Tailwind v4 `@theme` |
+| Components | React 19 on Radix primitives |
+| Toasts | Own `ToastProvider`: errors sticky, success auto-dismisses |
+| Type | Inter Variable + Geist Mono, self-hosted by the app |
+| Icons | lucide-react 1.x |
+| Testing | `node --test`, Playwright + axe-core |
+
+## Package contents
 
 | Subpath | Contents |
 |---|---|
 | `lumux/tokens.css` | All six themes, density, focus, motion, base rules |
 | `lumux/theme.css` | Tailwind v4 `@theme` mapping |
-| `lumux/tokens.embed.css` | 16-token `:host` subset for embeds, no Tailwind, minified |
-| `lumux/tokens.host.css` | Every token on `:host`, for shadow roots |
+| `lumux/tokens.embed.css` | 16-token `:host` subset for embeds, minified, no Tailwind |
+| `lumux/tokens.host.css` | Every token on `:host`, for UI inside shadow roots |
 | `lumux/theme-init.js` | Pre-paint script, to inline |
 | `lumux/theme` | `applyTheme`, `readTheme`, `resolvedTheme`, `resolvedScheme`, `THEME_NAMES` |
 | `lumux/react` | Components, `ThemeProvider`, `ThemeSwitcher` |
 | `lumux/eslint` | `eslint-plugin-jsx-a11y` strict config |
-| `scripts/install-gates.sh` | Installs the className, disabled-title and nested-scroller gates into a consumer |
+| `scripts/install-gates.sh` | Installs the three gates and a frozen baseline into a consumer |
 
-## Stack
+## Repo layout
 
-React 19 · Radix primitives · Tailwind v4 · TypeScript (strict) · Inter Variable + Geist Mono · lucide-react
+```
+lumux/
+├── src/
+│   ├── tokens/
+│   │   ├── vocabulary.ts     token names + legal fg/bg pairings
+│   │   ├── themes.ts         the six theme names and their light/dark scheme
+│   │   ├── sets/             core.ts (day, night) · extended.ts (dawn, midnight, forest, ocean)
+│   │   └── scale.ts          type · spacing · radius · motion · z · targets
+│   ├── theme/                applyTheme · readTheme · resolvedTheme, framework-free
+│   └── react/                one file per component, barrel index
+├── scripts/
+│   ├── build-tokens.ts       → dist/
+│   ├── check-contrast.ts     six themes × every pairing, exit 1 on failure
+│   ├── check-*.{mjs,sh}      the three gates
+│   ├── install-gates.sh      copies the gates and a frozen baseline into a consumer
+│   └── release.sh            builds dist/, commits it, tags vX.Y.Z
+├── eslint/a11y.js            jsx-a11y strict config, exported as lumux/eslint
+├── playground/               the demo page, also driven by the e2e harness
+├── tests/                    unit (node --test) · e2e (Playwright + axe)
+└── docs/                     getting-started · tokens · components · gates · copy
+```
 
 ## Development
 
@@ -104,10 +301,24 @@ React 19 · Radix primitives · Tailwind v4 · TypeScript (strict) · Inter Vari
 npm ci
 npm run check        # typecheck, lint, contrast, gates, build, unit
 npm run e2e          # axe, 44px targets, focus, 320px / 200% zoom, every theme
-npm run playground   # the demo page, locally
+npm run playground   # the demo page on localhost:5179
 ```
 
-A red gate is never bypassed.
+CI runs both suites on every PR. Every push to `main` publishes the demo to GitHub Pages. A red gate is never bypassed.
+
+## Versioning
+
+Semantic versioning on git tags, with `dist/` committed on the tag commit only. Token renames and removals are breaking. Removed tokens ship as deprecated aliases for one minor before deletion. Pin an exact tag and upgrade on purpose; updates never arrive silently.
+
+```sh
+npm run release -- X.Y.Z   # from a clean main
+```
+
+## Contributing
+
+1. A new token or component needs a real use in at least two apps. One-off needs stay in the app.
+2. Every PR passes `npm run check` and `npm run e2e`.
+3. Commits follow [Conventional Commits](https://www.conventionalcommits.org/).
 
 ## Documents
 
@@ -117,18 +328,12 @@ A red gate is never bypassed.
 | [docs/tokens.md](./docs/tokens.md) | Token reference: the six themes, every colour, type, spacing, motion, focus |
 | [docs/components.md](./docs/components.md) | Component contracts, props and the a11y behaviour each one guarantees |
 | [docs/gates.md](./docs/gates.md) | The three gates: what each catches, install, config, ratchets, blind spots |
-| [docs/copy.md](./docs/copy.md) | UI copy rules and the boundary on what never gets removed |
-
-## Versioning
-
-Semver on git tags. Token renames and removals are breaking; removed tokens ship as deprecated aliases for one minor before deletion. Pin an exact tag and upgrade deliberately.
-
-## Contributing
-
-1. A new token or component needs a real use in at least two apps.
-2. Every PR must pass `npm run check` and `npm run e2e`.
-3. Commits follow Conventional Commits.
+| [docs/copy.md](./docs/copy.md) | UI copy rules and what is never removed |
 
 ## License
 
-MIT
+[MIT](./LICENSE)
+
+---
+
+<p align="center"><sub>lumux · accessibility as a property of the system, not a review step</sub></p>

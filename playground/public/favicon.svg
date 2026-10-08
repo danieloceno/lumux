@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- lumux mark: a half-filled contrast disc on the accent tile. Colours are the
+       day / night accent and accent-foreground pairs, so the mark itself is 7:1. -->
+  <style>
+    .tile { fill: #005778; }
+    .ink { fill: #ffffff; }
+    .ring { fill: none; stroke: #ffffff; }
+    @media (prefers-color-scheme: dark) {
+      .tile { fill: #00cde0; }
+      .ink { fill: #0a1d2a; }
+      .ring { stroke: #0a1d2a; }
+    }
+  </style>
+  <rect class="tile" width="32" height="32" rx="7"/>
+  <circle class="ring" cx="16" cy="16" r="9" stroke-width="2.5"/>
+  <path class="ink" d="M16 7a9 9 0 0 0 0 18z"/>
+</svg>
