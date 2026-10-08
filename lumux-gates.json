@@ -1,0 +1,30 @@
+{
+  "src": [
+    "playground"
+  ],
+  "ui": "src/react",
+  "shared": [],
+  "owns": {},
+  "allow": [
+    {
+      "rule": "outline-none",
+      "file": "src/react/Popover.tsx",
+      "snippet": "outline-none",
+      "why": "Radix moves focus to the panel on open. The panel is a container, not a control, and its focus is programmatic; every control inside it keeps the ring."
+    }
+  ],
+  "touchAllow": [
+    {
+      "file": "src/react/Switch.tsx",
+      "snippet": "h-6",
+      "why": "The switch track (24px) is a glyph inside a 44px label row; the row is the target and the whole label is the name."
+    },
+    {
+      "file": "src/react/EmptyState.tsx",
+      "snippet": "size-8",
+      "why": "The 32px glyph above an empty-state title: an icon on the 14/16/20/32 scale, not a control."
+    }
+  ],
+  "disabledTitleAllow": [],
+  "baseline": "lumux-gates.baseline.json"
+}

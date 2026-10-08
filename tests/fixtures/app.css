@@ -1,0 +1,4 @@
+@import "tailwindcss" source(none);
+@import "../../dist/tokens.css";
+@import "../../dist/theme.css";
+@source "./sample.html";
