@@ -1,0 +1,5 @@
+@import 'tailwindcss' source(none);
+@import '../dist/tokens.css';
+@import '../dist/theme.css';
+@source '../src/react';
+@source '.';
